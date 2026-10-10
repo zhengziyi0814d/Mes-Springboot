@@ -1,0 +1,16 @@
+/.gitee/
+/.idea/
+/sparchetype/.mvn/
+*.log
+/target/
+/classes/
+mes/target/
+mes/upload/
+*.class
+*.jar
+*.war
+.vscode/
+.claude/
+mes/app_output.log
+mes/start
+start
