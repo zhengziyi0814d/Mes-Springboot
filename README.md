@@ -32,7 +32,7 @@
 
 ## 新增功能（二次开发）
 
-在原系统架构（Spring Boot + MyBatis-Plus + Shiro + FreeMarker/Layui）基础上新增五大核心业务模块，详细技术说明见 [新增功能文档](./实验%26补充/新增功能.md)。
+在原系统架构（Spring Boot + MyBatis-Plus + Shiro + FreeMarker/Layui）基础上新增五大核心业务模块。
 
 ### 1. 用户注册模块
 
