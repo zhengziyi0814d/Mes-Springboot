@@ -1,4 +1,8 @@
-﻿spring:
+# ============================================================
+# 说明：本文件已做敏感信息脱敏处理（数据库库名/账号/密码、Coze 令牌等）。
+#       真实值请通过环境变量注入：DB_NAME / DB_USERNAME / DB_PASSWORD / COZE_TOKEN / COZE_BOT_ID
+# ============================================================
+spring:
   servlet:
     multipart:
       enabled: true
@@ -22,14 +26,14 @@
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/sparchetype?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull"
-    username: root
-    password: 123456
+    url: "jdbc:mysql://localhost:3306/${DB_NAME:your_database}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull"
+    username: "${DB_USERNAME:your_username}"
+    password: "${DB_PASSWORD:your_password}"
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: "jdbc:mysql://localhost:3306/sparchetype?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull"
-      username: root
-      password: 123456
+      url: "jdbc:mysql://localhost:3306/${DB_NAME:your_database}?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong&allowPublicKeyRetrieval=true&zeroDateTimeBehavior=convertToNull"
+      username: "${DB_USERNAME:your_username}"
+      password: "${DB_PASSWORD:your_password}"
       initial-size: 8
       min-idle: 5
       max-active: 10
@@ -58,8 +62,8 @@ server:
 # ============================================================
 coze:
   api-url: "https://api.coze.cn/v3/chat"   # 扣子对话接口地址（国内版固定写这个）
-  token: "pat_S32v9Gc8orYTU4UJDU0ruPRsRHMGX5AUgPd0PsAgR8xjifNBEcABcGqTyx1UvMa1"       # API 令牌，优先读环境变量 COZE_TOKEN
-  bot-id: "7694171962314604584"             # 智能体ID，来自扣子发布后地址栏
+  token: "${COZE_TOKEN:your_coze_api_token}"       # API 令牌，优先读环境变量 COZE_TOKEN
+  bot-id: "${COZE_BOT_ID:your_bot_id}"             # 智能体ID，来自扣子发布后地址栏
   chat-title: "MES 智能客服"                # 聊天窗标题
   connect-timeout: 5000                    # 连接超时（毫秒）
   read-timeout: 60000                      # 读取超时（毫秒），AI 生成回答较慢，要给足时间
